@@ -48,8 +48,9 @@ Bm1Zzu+l8nSOqAurgQIDAQAB
         }
         res = self.httpx_session.get(url, params=params).text
         data = json.loads(res[22:-1])["data"]
-        # self.slice = data["slice"]
-        self.bg = "https://static.geetest.com/" + data["slice"].replace("slice", "bg")
+        if data["captcha_type"] != "slide":
+            raise Exception("非滑块验证码!")
+        self.bg = "https://static.geetest.com/" + data["bg"]
         self.process_token = data["process_token"]
         self.lot_number = data["lot_number"]
         self.payload = data["payload"]

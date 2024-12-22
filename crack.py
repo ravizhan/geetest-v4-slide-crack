@@ -44,7 +44,7 @@ Bm1Zzu+l8nSOqAurgQIDAQAB
             "challenge": str(uuid.uuid4()),
             "client_type": "web",
             "risk_type": "slide",
-            "lang": "zh",
+            "lang": "zho",
         }
         res = self.httpx_session.get(url, params=params).text
         data = json.loads(res[22:-1])["data"]
